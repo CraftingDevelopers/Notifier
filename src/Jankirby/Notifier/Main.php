@@ -17,10 +17,11 @@ public function isBanned(){
   $sender->getServer()->broadcastMessage(TextFormat::RED."$name tried to join, but he/she is banned!");
 }
   public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
-    if($cmd->getName() == "notifier"){
-  $sender->sendMessage("".$sender->getName()."This server uses Notifierv1.0 by Jankirby, ");
-      }
-   }
+  if($cmd->getName() == "notifier"){
+  $sender->sendMessage("This server uses Notifierv1.0 by Jankirby");
+  }
+  return true;
+  }
 }
 
   
