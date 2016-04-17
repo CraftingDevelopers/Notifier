@@ -1,0 +1,6 @@
+name: Notifier
+api: [1.0.0,2.0.0]
+main: Jankirby\Notifier\Main
+version: 1.0
+load: POSTWORLD
+description: Notify your server operators!
