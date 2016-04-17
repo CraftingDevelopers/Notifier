@@ -4,11 +4,6 @@ main: Jankirby\Notifier\Main
 version: 1.0
 load: POSTWORLD
 description: Notify your server operators!
-
-command:
-cmd1:
-  description: Notifier About
-  
-  permissions:
-    notifier.about:
-    default: true
+permissions:
+  notifier:
+    description: "Notifier Version & About #Notif"
