@@ -18,7 +18,7 @@ public function isBanned(){
 }
   public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
     if($cmd->getName() == "notifier"){
-  $sender->sendMessage("".$sender->getName()."$sender This server uses Notifier by Jankirby");
+  $sender->sendMessage("".$sender->getName()."This server uses Notifierv1.0 by Jankirby, ");
       }
    }
 }
