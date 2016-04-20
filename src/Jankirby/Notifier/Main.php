@@ -1,12 +1,11 @@
 <?php
+
 namespace Jankirby\Notifier;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\Listener;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player;
 
 class Main extends PluginBase implements Listener{
 
@@ -16,13 +15,7 @@ public function onPreLogin(PlayerPreLoginEvent $event){
     if(!$this->getServer()->isWhitelisted($player->getName())){
       $event->setCancelled(true);
       $event->setKickMessage(C::RED . $name . "joined the server, but he/she is not on the whitelist!");
-       if(!$this->getServer()->isBanned($player->getName())){
-        $event->setCancelled(true);
-      $event->setKickMessage(C::RED . $name . "joined the server, but he/she is Banned!");
-      if(!$this->getServer()->isOp($player->getName())){
-        $event->setKickMessage(C::RED . $name . "is an OPERATOR, and is here to help!");
-      }
-       }
+        }
     }
-}
+     }
 }
