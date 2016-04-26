@@ -1,20 +1,33 @@
 <?php
 
-namespace Jankirby\Notifier;
+namespace NoJDamage\Jankirby;
 
 use pocketmine\plugin\PluginBase;
-use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\event\Listener;
-use pocketmine\player;
+use pocketmine\event\entity\EntityDamageEvent;
+/*
+ * Copyright (c) 2016 Jankirby
+ */
+class Main extends PluginBase implements Listener {
 
-class Main extends PluginBase implements Listener{
+    private $cause;
 
-public function onPreLogin(PlayerPreLoginEvent $event){
-    $player = $event->getPlayer();
-    $name = $player->getName();
-    if(!$this->getServer()->isWhitelisted($player->getName())){
-      $event->setCancelled(true);
-      $event->setKickMessage(C::RED . $name . "joined the server, but he/she is not on the whitelist!");
-    }
-}
+    public function onEnable(){
+    $this->getServer()->getPluginManager()->registerEvents($this, $this);
+  }
+     public function onDamage(EntityDamageEvent $event){  
+         $entity = $event->getEntity();
+        /* @var $cause type */
+         $cause = $event->getCause();
+        if ($event->getEntity() instanceof Player) {
+            if($this->hasFall($entity)){
+                $this->disableFall();
+            if ($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
+                $sendMessage = $event->getPlayer()->getServer->sendMessage(TextFormat::RED ."You fell very high, but the damage was cured from your feet.");
+                $setCancelled = $event->setCancelled(true);
+                return $this->cause;
+            }
+            }
+        }
+     }
 }
